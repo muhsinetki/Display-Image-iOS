@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		93A7D1B924DA91680042E39D /* Display_Image_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93A7D1B724DA91680042E39D /* Display_Image_iOS.xcdatamodeld */; };
 		93A7D1BB24DA916A0042E39D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93A7D1BA24DA916A0042E39D /* Assets.xcassets */; };
 		93A7D1BE24DA916A0042E39D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A7D1BC24DA916A0042E39D /* LaunchScreen.storyboard */; };
+		93A7D1C824DAAD630042E39D /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A7D1C724DAAD630042E39D /* ImageManager.swift */; };
+		93A7D1CC24DBF36E0042E39D /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93A7D1CB24DBF36E0042E39D /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,7 @@
 		93A7D1BA24DA916A0042E39D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93A7D1BD24DA916A0042E39D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93A7D1BF24DA916A0042E39D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A7D1C724DAAD630042E39D /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93A7D1CC24DBF36E0042E39D /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,14 +64,39 @@
 			children = (
 				93A7D1AE24DA91680042E39D /* AppDelegate.swift */,
 				93A7D1B024DA91680042E39D /* SceneDelegate.swift */,
-				93A7D1B224DA91680042E39D /* ViewController.swift */,
-				93A7D1B424DA91680042E39D /* Main.storyboard */,
+				93A7D1C924DAAD6E0042E39D /* Model */,
+				93A7D1C624DAACF70042E39D /* View */,
+				93A7D1C524DAACAE0042E39D /* Controller */,
 				93A7D1BA24DA916A0042E39D /* Assets.xcassets */,
 				93A7D1BC24DA916A0042E39D /* LaunchScreen.storyboard */,
 				93A7D1BF24DA916A0042E39D /* Info.plist */,
 				93A7D1B724DA91680042E39D /* Display_Image_iOS.xcdatamodeld */,
 			);
 			path = "Display-Image-iOS";
+			sourceTree = "<group>";
+		};
+		93A7D1C524DAACAE0042E39D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				93A7D1B224DA91680042E39D /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		93A7D1C624DAACF70042E39D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93A7D1B424DA91680042E39D /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93A7D1C924DAAD6E0042E39D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93A7D1C724DAAD630042E39D /* ImageManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +115,9 @@
 			dependencies = (
 			);
 			name = "Display-Image-iOS";
+			packageProductDependencies = (
+				93A7D1CB24DBF36E0042E39D /* IQKeyboardManagerSwift */,
+			);
 			productName = "Display-Image-iOS";
 			productReference = 93A7D1AB24DA91680042E39D /* Display-Image-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +146,9 @@
 				Base,
 			);
 			mainGroup = 93A7D1A224DA91680042E39D;
+			packageReferences = (
+				93A7D1CA24DBF36E0042E39D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = 93A7D1AC24DA91680042E39D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -144,6 +179,7 @@
 				93A7D1B924DA91680042E39D /* Display_Image_iOS.xcdatamodeld in Sources */,
 				93A7D1B324DA91680042E39D /* ViewController.swift in Sources */,
 				93A7D1AF24DA91680042E39D /* AppDelegate.swift in Sources */,
+				93A7D1C824DAAD630042E39D /* ImageManager.swift in Sources */,
 				93A7D1B124DA91680042E39D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +378,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		93A7D1CA24DBF36E0042E39D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		93A7D1CB24DBF36E0042E39D /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93A7D1CA24DBF36E0042E39D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		93A7D1B724DA91680042E39D /* Display_Image_iOS.xcdatamodeld */ = {
