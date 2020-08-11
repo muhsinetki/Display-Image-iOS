@@ -9,6 +9,15 @@
           "revision": "b0f0a127cca6bb39378447baa2afff74123abd09",
           "version": "6.5.5"
         }
+      },
+      {
+        "package": "NVActivityIndicatorView",
+        "repositoryURL": "https://github.com/ninjaprox/NVActivityIndicatorView.git",
+        "state": {
+          "branch": null,
+          "revision": "35182298f37d2add3f56f28b76d57eb9d78c4d7a",
+          "version": "5.0.0"
+        }
       }
     ]
   },

@@ -16,6 +16,8 @@
 		93A7D1BE24DA916A0042E39D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A7D1BC24DA916A0042E39D /* LaunchScreen.storyboard */; };
 		93A7D1C824DAAD630042E39D /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A7D1C724DAAD630042E39D /* ImageManager.swift */; };
 		93A7D1CC24DBF36E0042E39D /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93A7D1CB24DBF36E0042E39D /* IQKeyboardManagerSwift */; };
+		93A7D1CF24DC34490042E39D /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 93A7D1CE24DC34490042E39D /* NVActivityIndicatorView */; };
+		93A7D1D124DC34490042E39D /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 93A7D1D024DC34490042E39D /* NVActivityIndicatorViewExtended */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93A7D1D124DC34490042E39D /* NVActivityIndicatorViewExtended in Frameworks */,
+				93A7D1CF24DC34490042E39D /* NVActivityIndicatorView in Frameworks */,
 				93A7D1CC24DBF36E0042E39D /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +121,8 @@
 			name = "Display-Image-iOS";
 			packageProductDependencies = (
 				93A7D1CB24DBF36E0042E39D /* IQKeyboardManagerSwift */,
+				93A7D1CE24DC34490042E39D /* NVActivityIndicatorView */,
+				93A7D1D024DC34490042E39D /* NVActivityIndicatorViewExtended */,
 			);
 			productName = "Display-Image-iOS";
 			productReference = 93A7D1AB24DA91680042E39D /* Display-Image-iOS.app */;
@@ -148,6 +154,7 @@
 			mainGroup = 93A7D1A224DA91680042E39D;
 			packageReferences = (
 				93A7D1CA24DBF36E0042E39D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				93A7D1CD24DC34490042E39D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = 93A7D1AC24DA91680042E39D /* Products */;
 			projectDirPath = "";
@@ -388,6 +395,14 @@
 				version = 6.5.5;
 			};
 		};
+		93A7D1CD24DC34490042E39D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -395,6 +410,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 93A7D1CA24DBF36E0042E39D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		93A7D1CE24DC34490042E39D /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93A7D1CD24DC34490042E39D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		93A7D1D024DC34490042E39D /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93A7D1CD24DC34490042E39D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
 		};
 /* End XCSwiftPackageProductDependency section */
 

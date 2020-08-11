@@ -7,79 +7,59 @@
 //
 
 import UIKit
+import NVActivityIndicatorViewExtended
+import NVActivityIndicatorView
 
 class ViewController: UIViewController {
     
-    var imageManager = ImageManager()
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var urlTextField: UITextField!
-    @IBOutlet weak var loadingLabel: UILabel!
+    var imageManager = ImageManager()
+    var activityIndicator : NVActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imageManager.delegate = self
-        urlTextField.delegate = self
+        activityIndicator = NVActivityIndicatorView(frame: CGRect(x: view.center.x/2, y: view.center.y/2 , width: view.frame.width/2, height: view.frame.height/2), type: .pacman, color: .systemPink, padding: 0)
     }
     
     @IBAction func downloadButtonPressed(_ sender: UIButton) {
-        urlTextField.endEditing(true)
+        if let urlString = urlTextField.text {
+            if let url = URL(string: urlString){
+                imageManager.performRequest(with: url)
+                if let indicator = activityIndicator{
+                    self.view.addSubview(indicator)
+                    indicator.startAnimating()
+                }
+            }
+        }
         self.imageView.image = nil
-        self.loadingLabel.text = "Loading..."
     }
 }
 
 //MARK: - ImageManagerDelegate
 extension ViewController: ImageManagerDelegate {
-    func didDownloadImage(_ imageManager: ImageManager, image: UIImage) {
-        
+    
+    func imageManagerDidFinishLoadingImage(image: UIImage) {
         DispatchQueue.main.async {
             self.imageView.image = image
-            self.loadingLabel.text = ""
+            if let indicator = self.activityIndicator {
+                indicator.stopAnimating()
+            }
         }
-        
-        
     }
     
-    func didFailWithError(error: Error) {
+    func imageManagerDidFailToLoadImage() {
         DispatchQueue.main.async {
+            if let indicator = self.activityIndicator {
+                indicator.stopAnimating()
+            }
             self.imageView.image = nil
-            self.loadingLabel.text = ""
-            
             let alertController = UIAlertController(title: self.title, message: "Invalid image URL", preferredStyle:UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
             { action -> Void in
             })
             self.present(alertController, animated: true, completion: nil)
         }
-    }
-}
-
-//MARK: - UITextFieldDelegate
-extension ViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        urlTextField.endEditing(true)
-        self.imageView.image = nil
-        self.loadingLabel.text = "Loading..."
-        return true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField.text != "" {
-            return true
-        } else {
-            textField.placeholder = "Type URL"
-            return false
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        if let urlString = urlTextField.text {
-            if let url = URL(string: urlString){
-                imageManager.performRequest(with: url)
-            }
-        }
-        urlTextField.text = ""
     }
 }

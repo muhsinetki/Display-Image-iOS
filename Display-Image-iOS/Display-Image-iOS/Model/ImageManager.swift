@@ -2,8 +2,8 @@ import Foundation
 import UIKit
 
 protocol ImageManagerDelegate {
-    func didDownloadImage(_ imageManager: ImageManager, image: UIImage)
-    func didFailWithError(error: Error)
+    func imageManagerDidFinishLoadingImage(image: UIImage)
+    func imageManagerDidFailToLoadImage()
 }
 
 struct ImageManager {
@@ -14,13 +14,18 @@ struct ImageManager {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { (data, response, error) in
             if error != nil {
-                self.delegate?.didFailWithError(error: error!)
+                self.delegate?.imageManagerDidFailToLoadImage()
                 return
-            }
-            if let safeData = data {
+            }else if let safeData = data {
                 if let image = UIImage(data: safeData) {
-                    self.delegate?.didDownloadImage(self, image: image)
+                    self.delegate?.imageManagerDidFinishLoadingImage(image: image)
+                }else {
+                    self.delegate?.imageManagerDidFailToLoadImage()
+                    return
                 }
+            }else {
+                self.delegate?.imageManagerDidFailToLoadImage()
+                return
             }
         }
         task.resume()
