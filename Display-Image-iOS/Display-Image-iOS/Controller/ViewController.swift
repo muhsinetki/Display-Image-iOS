@@ -20,15 +20,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageManager.delegate = self
-        self.view.addSubview(activityIndicator)
         activityIndicator.isHidden=true
     }
     
     @IBAction func downloadButtonPressed(_ sender: UIButton) {
         if let urlString = urlTextField.text {
             if let url = URL(string: urlString){
-                imageManager.performRequest(with: url)
                 activityIndicator.startAnimating()
+                imageManager.performRequest(with: url)
             }
         }
         self.imageView.image = nil
@@ -40,15 +39,14 @@ extension ViewController: ImageManagerDelegate {
     
     func imageManagerDidFinishLoadingImage(image: UIImage) {
         DispatchQueue.main.async {
-            self.imageView.image = image
             self.activityIndicator.stopAnimating()
+            self.imageView.image = image
         }
     }
     
     func imageManagerDidFailToLoadImage() {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
-            
             self.imageView.image = nil
             let alertController = UIAlertController(title: self.title, message: "Invalid image URL", preferredStyle:UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
