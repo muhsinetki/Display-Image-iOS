@@ -16,13 +16,8 @@ struct ImageManager {
             if error != nil {
                 self.delegate?.imageManagerDidFailToLoadImage()
                 return
-            }else if let safeData = data {
-                if let image = UIImage(data: safeData) {
-                    self.delegate?.imageManagerDidFinishLoadingImage(image: image)
-                }else {
-                    self.delegate?.imageManagerDidFailToLoadImage()
-                    return
-                }
+            }else if let safeData = data , let image = UIImage(data: safeData){
+                self.delegate?.imageManagerDidFinishLoadingImage(image: image)
             }else {
                 self.delegate?.imageManagerDidFailToLoadImage()
                 return
